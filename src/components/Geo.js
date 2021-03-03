@@ -34,11 +34,11 @@ class Geo extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          Location : {this.state.cityName}, {this.state.countryName}
-        </p>
+      <div class="pa3 fw3">
         <Temp lat={this.state.latitude} lon={this.state.longitude} />
+        <p class="f6 lh-copy">
+          {this.state.cityName}, {this.state.countryName}
+        </p>
       </div>
     );
   }

@@ -26,22 +26,40 @@ const Temp = ({ lat, lon }) => {
   }, [lat, lon, setState]);
   const temp = Math.round(state.temp - 273.15);
   const wind = Math.round(state.wind * 3.6);
-  if (temp < 15 || wind > 20) {
+  if (temp < 0 || wind > 20) {
     return (
       <div>
-        <p>
-          Temp: {temp}C, Wind: {wind}km/h, {state.precip}.
-        </p>
-        <p>You should probably stay inside.</p>
+        <div class="pa3 f1 lh-title">You should probably stay inside.</div>
+        <div role="img" aria-label="Flower">
+          🌺🌻🌲
+        </div>
+        <div class="pa3 f6 lh-copy">
+          Temp: {temp}C | Wind: {wind}km/h | {state.precip}
+        </div>
+      </div>
+    );
+  } else if (temp > 0 && wind < 20) {
+    return (
+      <div>
+        <div class="pa3 f1 lh-title">Bundle up, but it should be fine!</div>
+        <div role="img" aria-label="Flower">
+          🌺🌻🌲
+        </div>
+        <div class="pa3 f6 lh-copy">
+          Temp: {temp}C | Wind: {wind}km/h | {state.precip}
+        </div>
       </div>
     );
   } else {
     return (
       <div>
-        <p>
+        <div class="pa3 f1 lh-title">Yes, go for a walk!</div>
+        <div role="img" aria-label="Flower">
+          🌺🌻🌲
+        </div>
+        <div class="pa3 f6 lh-copy">
           Temp: {temp} C, Wind: {wind} km/h, {state.precip}.
-        </p>
-        <p>Yes, go for a walk!</p>
+        </div>
       </div>
     );
   }
