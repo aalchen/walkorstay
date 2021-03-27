@@ -8,15 +8,16 @@ const Temp = ({ lat, lon }) => {
     if (lat && lon) {
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8f61a1e09924a4c204d0927cfe0ff964`
+          // `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8f61a1e09924a4c204d0927cfe0ff964`
+          `http://api.weatherstack.com/current?access_key=f56df9235185e35a06c7f036cf93ecc4&query=${lat},${lon}`
         )
         .then((response) => {
           let data = response.data;
           console.log(data);
           setState({
-            temp: data.main.temp,
-            wind: data.wind.speed,
-            precip: data.weather[0].description,
+            temp: data.current.temperature,
+            wind: data.current.wind_speed,
+            precip: data.current.weather_descriptions[0],
           });
         })
         .catch((error) => {
@@ -24,8 +25,8 @@ const Temp = ({ lat, lon }) => {
         });
     }
   }, [lat, lon, setState]);
-  const temp = Math.round(state.temp - 273.15);
-  const wind = Math.round(state.wind * 3.6);
+  const temp = Math.round(state.temp);
+  const wind = Math.round(state.wind);
   if (temp < 0 || wind > 20) {
     return (
       <div>
