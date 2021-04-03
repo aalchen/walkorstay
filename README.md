@@ -4,7 +4,7 @@ Inspired by my love of going for walks.
 
 ### Made with :
 
-- OpenWeatherAPI
+- WeatherStack API
 - IP API
 - React
 - Tachyons
