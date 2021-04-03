@@ -9,7 +9,7 @@ const Temp = ({ lat, lon }) => {
       axios
         .get(
           // `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8f61a1e09924a4c204d0927cfe0ff964`
-          `http://api.weatherstack.com/current?access_key=f56df9235185e35a06c7f036cf93ecc4&query=${lat},${lon}`
+          `https://api.weatherstack.com/current?access_key=f56df9235185e35a06c7f036cf93ecc4&query=${lat},${lon}`
         )
         .then((response) => {
           let data = response.data;
